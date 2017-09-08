@@ -4,18 +4,18 @@
   <meta charset="utf-8">
   <link rel="shortcut icon" href="/san/img/favicon.ico" type="image/x-icon" />
   
-  <title>服务端渲染 | San</title>
+  <title>什么东西可以保存在data里？ | San</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="San 的服务端渲染支持是基于 组件反解 的：  服务端输出的 HTML 中带有对视图无影响，能帮助组件了解数据与视图结构的标记片段 浏览器端，组件初始化时从标记片段理解组件结构，在后续用户操作时组件能正确响应，发挥作用  提示：由于组件运行环境需要考虑浏览器各版本和NodeJS，示例代码为保证简单无需transform，全部采用ES5编写。 是否需要SSR服务端渲染，视图 HTML 直出有一些显">
+  <meta name="description" content="在 San 的文档中写道：” San 是一个 MVVM 的组件框架，通过 San 的视图引擎能够让用户只用操作数据，视图自动更新”。这里要说的 data 指的就是用户操作的”数据”。data 里应该存与视图相关的数据状态。 data 中保存的数据对于一个组件，data 数据的来源可分为如下两种：1、组件自身定义的数据;2、从父组件中传入的数据;3、computed 中定义的数据;以上三种，我们都可">
 <meta property="og:type" content="article">
-<meta property="og:title" content="服务端渲染">
-<meta property="og:url" content="http://ecomfe.github.io/tutorial/ssr/index.html">
+<meta property="og:title" content="什么东西可以保存在data里？">
+<meta property="og:url" content="http://ecomfe.github.io/practice/data-valid/index.html">
 <meta property="og:site_name" content="San">
-<meta property="og:description" content="San 的服务端渲染支持是基于 组件反解 的：  服务端输出的 HTML 中带有对视图无影响，能帮助组件了解数据与视图结构的标记片段 浏览器端，组件初始化时从标记片段理解组件结构，在后续用户操作时组件能正确响应，发挥作用  提示：由于组件运行环境需要考虑浏览器各版本和NodeJS，示例代码为保证简单无需transform，全部采用ES5编写。 是否需要SSR服务端渲染，视图 HTML 直出有一些显">
-<meta property="og:updated_time" content="2017-08-07T03:50:07.000Z">
+<meta property="og:description" content="在 San 的文档中写道：” San 是一个 MVVM 的组件框架，通过 San 的视图引擎能够让用户只用操作数据，视图自动更新”。这里要说的 data 指的就是用户操作的”数据”。data 里应该存与视图相关的数据状态。 data 中保存的数据对于一个组件，data 数据的来源可分为如下两种：1、组件自身定义的数据;2、从父组件中传入的数据;3、computed 中定义的数据;以上三种，我们都可">
+<meta property="og:updated_time" content="2017-09-08T06:34:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="服务端渲染">
-<meta name="twitter:description" content="San 的服务端渲染支持是基于 组件反解 的：  服务端输出的 HTML 中带有对视图无影响，能帮助组件了解数据与视图结构的标记片段 浏览器端，组件初始化时从标记片段理解组件结构，在后续用户操作时组件能正确响应，发挥作用  提示：由于组件运行环境需要考虑浏览器各版本和NodeJS，示例代码为保证简单无需transform，全部采用ES5编写。 是否需要SSR服务端渲染，视图 HTML 直出有一些显">
+<meta name="twitter:title" content="什么东西可以保存在data里？">
+<meta name="twitter:description" content="在 San 的文档中写道：” San 是一个 MVVM 的组件框架，通过 San 的视图引擎能够让用户只用操作数据，视图自动更新”。这里要说的 data 指的就是用户操作的”数据”。data 里应该存与视图相关的数据状态。 data 中保存的数据对于一个组件，data 数据的来源可分为如下两种：1、组件自身定义的数据;2、从父组件中传入的数据;3、computed 中定义的数据;以上三种，我们都可">
   
     <link rel="alternate" href="/atom.xml" title="San" type="application/atom+xml">
   
@@ -120,7 +120,7 @@
     </dl>
 </aside>
 
-<article id="post-tutorial/ssr" class="article article-type-post" itemscope itemprop="blogPost">
+<article id="post-practice/data-valid" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     
@@ -128,43 +128,19 @@
 
   
     <h1 class="article-title" itemprop="name">
-      服务端渲染
+      什么东西可以保存在data里？
     </h1>
   
 
-  <a href="https://github.com/ecomfe/san-website/tree/master/source/_posts/tutorial/ssr.md" class="article-edit-link" title="编辑本文" target="_blank"><i class="fa fa-pencil"></i> 编辑本文</a>
+  <a href="https://github.com/ecomfe/san-website/tree/master/source/_posts/practice/data-valid.md" class="article-edit-link" title="编辑本文" target="_blank"><i class="fa fa-pencil"></i> 编辑本文</a>
 </div>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>San 的服务端渲染支持是基于 <a href="../reverse/">组件反解</a> 的：</p>
-<ul>
-<li>服务端输出的 HTML 中带有对视图无影响，能帮助组件了解数据与视图结构的标记片段</li>
-<li>浏览器端，组件初始化时从标记片段理解组件结构，在后续用户操作时组件能正确响应，发挥作用</li>
-</ul>
-<p><code>提示</code>：由于组件运行环境需要考虑浏览器各版本和NodeJS，示例代码为保证简单无需transform，全部采用ES5编写。</p>
-<h2 id="是否需要SSR"><a href="#是否需要SSR" class="headerlink" title="是否需要SSR"></a>是否需要SSR</h2><p>服务端渲染，视图 HTML 直出有一些显而易见的好处：</p>
-<ul>
-<li>SEO 友好，HTML 直接输出对搜索引擎的抓取和理解更有利</li>
-<li>用户能够第一时间看到内容。从开发者角度来说，首屏时间更快到来</li>
-</ul>
-<p>但是，如果使用服务端渲染，我们将面对：</p>
-<ul>
-<li>更高的成本。虽然我们开发的是一份组件，但我们需要考虑其运行时是 NodeJS 和 浏览器 双端的，我们需要考虑在服务端渲染要提前编译，我们需要考虑组件的源码如何输出到浏览器端，我们需要考虑开发组件的浏览器兼容性，到底要写老旧的浏览器兼容性好的代码还是按ESNext写然后通过打包编译时 transform。这依然带来了维护成本的增加，即使不多</li>
-<li>用户可交互时间不一定更早到来。交互行为是由组件管理的，组件从当前视图反解出数据和结构需要遍历 DOM 树，反解的时间不一定比在前端直接渲染要快</li>
-</ul>
-<p>所以，我们建议，使用服务端渲染时全面评估，只在必须使用的场景下使用。下面是一些场景建议：</p>
-<ul>
-<li>后台系统（CMS、MIS、DashBoard之类）大多使用 Single Page Application 的模式。显而易见，这类系统不需要使用 SSR</li>
-<li>功能型页面，不需要使用 SSR。比如个人中心、我的收藏之类</li>
-<li>仅在 App 的 WebView 中展现，不作为开放 Web 存在的页面，不需要使用 SSR</li>
-<li>偏重内容型页面，可以使用 SSR。但是组件是管理行为交互的，对内容部分无需进行组件渲染，只需要在有交互的部分进行组件反解渲染</li>
-</ul>
-<h2 id="输出HTML"><a href="#输出HTML" class="headerlink" title="输出HTML"></a>输出HTML</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> MyComponent = san.defineComponent(&#123;</div><div class="line">    template: <span class="string">'&lt;a&gt;&lt;span title="&#123;&#123;email&#125;&#125;"&gt;&#123;&#123;name&#125;&#125;&lt;/span&gt;&lt;/a&gt;'</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> render = san.compileToRenderer(MyComponent);</div><div class="line">render(&#123;</div><div class="line">    email: <span class="string">'errorrik@gmail.com'</span>,</div><div class="line">    name: <span class="string">'errorrik'</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">// render html result:</span></div><div class="line"><span class="comment">// &lt;a&gt;....&lt;/a&gt;</span></div></pre></td></tr></table></figure>
-<p>San 在主包下提供了 <strong>compileToRenderer</strong> 方法。该方法接收组件的类作为参数，编译返回一个 <strong>{string}render({Object} data)</strong> 方法。 <strong>render</strong> 方法接收数据，返回组件渲染后的 HTML 字符串。</p>
-<h2 id="编译NodeJS模块"><a href="#编译NodeJS模块" class="headerlink" title="编译NodeJS模块"></a>编译NodeJS模块</h2><p>有时候，我们希望组件编译的 render 方法是一个单独的 NodeJS Module，以便于其他模块引用它。通过 San 主包下提供的 <strong>compileToSource</strong> 方法我们可以编译 NodeJS Module。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> san = <span class="built_in">require</span>(<span class="string">'san'</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> MyComponent = san.defineComponent(&#123;</div><div class="line">    template: <span class="string">'&lt;a&gt;&lt;span title="&#123;&#123;email&#125;&#125;"&gt;&#123;&#123;name&#125;&#125;&lt;/span&gt;&lt;/a&gt;'</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> renderSource = san.compileToSource(MyComponent);</div><div class="line">fs.writeFileSync(<span class="string">'your-module.js'</span>, <span class="string">'exports = module.exports = '</span> + renderSource, <span class="string">'UTF-8'</span>);</div></pre></td></tr></table></figure>
-<p><strong>compileToSource</strong> 方法接收组件的类作为参数，编译返回组件 render 的 source code，具体为 <code>function (data) {...}</code> 形式的字符串。我们只需要在前面增加 <code>exports = module.exports =</code>，并写入 <strong>.js</strong> 文件中，就能得到一个符合 CommonJS 标准的 NodeJS Module。</p>
+        <p>在 San 的文档中写道：” San 是一个 MVVM 的组件框架，通过 San 的视图引擎能够让用户只用操作数据，视图自动更新”。这里要说的 data 指的就是用户操作的”数据”。data 里应该存与视图相关的数据状态。</p>
+<h4 id="data-中保存的数据"><a href="#data-中保存的数据" class="headerlink" title="data 中保存的数据"></a>data 中保存的数据</h4><p>对于一个组件，data 数据的来源可分为如下两种：<br>1、组件自身定义的数据;<br>2、从父组件中传入的数据;<br>3、computed 中定义的数据;<br>以上三种，我们都可以通过<code>this.data.get()</code>方法获取。</p>
+<p>组件自身定义的数据（状态）保存在该组件的 data 中，可以对其进行修改从而影响当前组件以及子组件的视图。从父组件传入的数据，可以从 data 中获取，但通常我们只是使用这个数据，如果要更改从父组件传入的数据，虽然可以直接在组件内更改，但通常的做法是到该数据初始化的地方去更改。</p>
+<h4 id="data-数据应该是纯数据"><a href="#data-数据应该是纯数据" class="headerlink" title="data 数据应该是纯数据"></a>data 数据应该是纯数据</h4><p>data 数据可以是字符串、数值、 数组、原生对象这样的纯数据。对于正则表达式，纯函数这样的，如果是在组件自身使用，则需要外部引入，或者作为组件的方法。 但如果要传递给子组件使用，则可以存放在 data 中。 例如，在表单组件中，我们可能会在业务层自定义验证方法，传入子组件使用。</p>
 
       
     </div>
@@ -173,7 +149,7 @@
 
 <aside class="toc-wrap">
   <a href="#" class="toc-top"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></a>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#是否需要SSR"><span class="toc-text">是否需要SSR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出HTML"><span class="toc-text">输出HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译NodeJS模块"><span class="toc-text">编译NodeJS模块</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#data-中保存的数据"><span class="toc-text">data 中保存的数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#data-数据应该是纯数据"><span class="toc-text">data 数据应该是纯数据</span></a></li></ol>
 </aside>
 
 </main>
