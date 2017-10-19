@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://ecomfe.github.io/tutorial/reverse/index.html">
 <meta property="og:site_name" content="San">
 <meta property="og:description" content="组件初始化时传入 el，其将作为组件根元素，并以此反解析出视图结构。 该特性的意图是：有时我们为了首屏时间，期望初始的视图是直接的 HTML，不由组件渲染。但是我们希望组件为我们管理数据、逻辑与视图，后续的用户交互行为与视图变换通过组件管理。 123var myComponent = new MyComponent(&amp;#123;    el: document.getElementById(&apos;wr">
-<meta property="og:updated_time" content="2017-08-17T05:47:40.000Z">
+<meta property="og:updated_time" content="2017-10-19T07:45:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="组件反解">
 <meta name="twitter:description" content="组件初始化时传入 el，其将作为组件根元素，并以此反解析出视图结构。 该特性的意图是：有时我们为了首屏时间，期望初始的视图是直接的 HTML，不由组件渲染。但是我们希望组件为我们管理数据、逻辑与视图，后续的用户交互行为与视图变换通过组件管理。 123var myComponent = new MyComponent(&amp;#123;    el: document.getElementById(&apos;wr">
@@ -105,6 +105,7 @@
         <dd><a href="/san/doc/main-members/">主模块 API</a></dd>
         <dd><a href="https://github.com/ecomfe/san/blob/master/doc/anode.md" target="_blank">ANode DOC</a></dd>
         <dd><a href="https://github.com/ecomfe/san/tree/master/dist" target="_blank">发布版本说明</a></dd>
+        <dd><a href="https://github.com/ecomfe/san/blob/master/CHANGELOG.md" target="_blank">版本更新日志</a></dd>
 
         <dt>周边</dt>
         <dd><a href="https://ecomfe.github.io/san-mui/" target="_blank">san-mui</a></dd>
@@ -155,7 +156,7 @@
 <li>文本前的注释以 <strong>s-text:</strong> 开头，紧跟着插值文本的声明。</li>
 <li>文本后的注释内容为 <strong>/s-text</strong>，代表插值文本片段结束。</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="comment">&lt;!--s-text:&#123;&#123;name&#125;&#125; - &#123;&#123;email&#125;&#125;--&gt;</span>errorrik - errorrik@gmail.com<span class="comment">&lt;!--s-text--&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="comment">&lt;!--s-text:&#123;&#123;name&#125;&#125; - &#123;&#123;email&#125;&#125;--&gt;</span>errorrik - errorrik@gmail.com<span class="comment">&lt;!--/s-text--&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
 <p><code>提示</code>：<strong>s- 开头的 HTML Comment</strong> 是重要的标记手段，在循环与分支标记中也会用到它。</p>
 <h3 id="插值属性"><a href="#插值属性" class="headerlink" title="插值属性"></a>插值属性</h3><p>插值属性的标记方式是：在 <strong>prop-</strong> 为前缀的属性上声明属性的内容。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">title</span>=<span class="string">"errorrik - errorrik@gmail.com"</span> <span class="attr">prop-title</span>=<span class="string">"&#123;&#123;name&#125;&#125; - &#123;&#123;email&#125;&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
